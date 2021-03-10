@@ -1,44 +1,77 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   FaChevronDown,
   FaInbox,
   FaRegCalendarAlt,
   FaRegCalendar,
+  FaChevronRight,
 } from 'react-icons/fa'
+import { useSelectedPorjectValue } from '../../context/selected-project-context'
+import { AddProject } from '../AddProject'
+import { Projects } from '../Projects'
 
 export const Sidebar = () => {
+  const { setSelectedProject } = useSelectedPorjectValue()
+  const [active, setActive] = useState('inbox')
+  const [showProjects, setShowProjects] = useState(true)
+
+  const sidebarItems = [
+    {
+      key: 'INBOX',
+      name: 'inbox',
+      label: ' Inbox',
+      icon: <FaInbox />,
+    },
+    {
+      key: 'TODAY',
+      name: 'today',
+      label: ' Today',
+      icon: <FaRegCalendar />,
+    },
+    {
+      key: 'NEXT_WEEK',
+      name: 'next_7',
+      label: ' Next 7 days',
+      icon: <FaRegCalendarAlt />,
+    },
+  ]
+
   return (
     <div className='sidebar'>
       <ul className='sidebar__generic'>
-        <li className='inbox'>
-          <span>
-            <FaInbox />
-          </span>
-          <span>Inbox</span>
-        </li>
-        <li className='today'>
-          <span>
-            <FaRegCalendar />
-          </span>
-          <span>Today</span>
-        </li>
-        <li className='next_7'>
-          <span>
-            <FaRegCalendarAlt />
-          </span>
-          <span>Next Week</span>
-        </li>
+        {sidebarItems.map((item) => {
+          const { key, name, icon, label } = item
+          return (
+            <li
+              className={active === name ? 'active ' + name : undefined}
+              onClick={() => {
+                setActive(name)
+                setSelectedProject(key)
+              }}
+            >
+              <span>{icon}</span>
+              <span>{label}</span>
+            </li>
+          )
+        })}
       </ul>
-      <div className='sidebar__middle'>
+      <div
+        className='sidebar__middle'
+        onClick={() => setShowProjects(!showProjects)}
+      >
         <span>
-          <FaChevronDown />
+          {showProjects && (
+            <FaChevronDown onClick={() => setShowProjects(!showProjects)} />
+          )}
+
+          {!showProjects && (
+            <FaChevronRight onClick={() => setShowProjects(!showProjects)} />
+          )}
         </span>
         <h2>Projects</h2>
       </div>
-      <ul className='sidebar__projects'>
-        <li>Projects will be here !</li>
-      </ul>
-      app project component here !!!
+      <ul className='sidebar__projects'>{showProjects && <Projects />}</ul>
+      {showProjects && <AddProject />}
     </div>
   )
 }

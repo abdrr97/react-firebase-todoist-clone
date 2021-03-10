@@ -3,4 +3,18 @@ import {
   ProjectProvider,
   useProjectsValue,
 } from './projects-context'
-export { ProjectContext, ProjectProvider, useProjectsValue }
+
+import {
+  SelectedProjectContext,
+  SelectedProjectProvider,
+  useSelectedPorjectValue,
+} from './selected-project-context'
+
+export {
+  ProjectContext,
+  ProjectProvider,
+  useProjectsValue,
+  SelectedProjectContext,
+  SelectedProjectProvider,
+  useSelectedPorjectValue,
+}

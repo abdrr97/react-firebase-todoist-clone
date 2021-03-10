@@ -1,11 +1,15 @@
 import React from 'react'
 import { Content, Header } from './components/layout'
-import { ProjectProvider } from './context'
+import { ProjectProvider, SelectedProjectProvider } from './context'
 export const App = () => {
   return (
-    <ProjectProvider>
-      <Header />
-      <Content />
-    </ProjectProvider>
+    <SelectedProjectProvider>
+      <ProjectProvider>
+        <div className='App'>
+          <Header />
+          <Content />
+        </div>
+      </ProjectProvider>
+    </SelectedProjectProvider>
   )
 }

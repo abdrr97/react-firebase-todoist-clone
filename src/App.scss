@@ -3,6 +3,15 @@
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
 
+/*
+padding: 10px;
+    position: absolute;
+    right: 50px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+*/
+
 // General Settings
 html {
   -webkit-box-sizing: border-box;
@@ -282,12 +291,8 @@ header {
       padding-left: 10px;
       padding-right: 15px;
       width: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
+      position: absolute;
+      right: 0;
     }
 
     &-delete {
@@ -384,9 +389,8 @@ header {
       cursor: pointer;
       line-height: 1.5;
       font-size: 15px;
-      padding-left: 0;
-      padding-right: 0;
-
+      padding: 10px;
+      align-items: center;
       div:nth-child(1) {
         display: -webkit-box;
         display: -ms-flexbox;
