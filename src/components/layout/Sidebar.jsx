@@ -10,19 +10,19 @@ export const Sidebar = () => {
   return (
     <div className='sidebar'>
       <ul className='sidebar__generic'>
-        <li>
+        <li className='inbox'>
           <span>
             <FaInbox />
           </span>
           <span>Inbox</span>
         </li>
-        <li>
+        <li className='today'>
           <span>
             <FaRegCalendar />
           </span>
           <span>Today</span>
         </li>
-        <li>
+        <li className='next_7'>
           <span>
             <FaRegCalendarAlt />
           </span>
@@ -35,7 +35,9 @@ export const Sidebar = () => {
         </span>
         <h2>Projects</h2>
       </div>
-      <ul className='sidebar__projects'>Projects will be here !</ul>
+      <ul className='sidebar__projects'>
+        <li>Projects will be here !</li>
+      </ul>
       app project component here !!!
     </div>
   )

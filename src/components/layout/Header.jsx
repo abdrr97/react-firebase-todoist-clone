@@ -9,12 +9,11 @@ export const Header = () => {
             src='https://raw.githubusercontent.com/karlhadwen/todoist/master/public/images/logo.png'
             alt='todoist react firebase clone'
           />
-          todoist
         </div>
         <div className='settings'>
           <ul>
-            <li>+</li>
-            <li>
+            <li className='settings__add'>+</li>
+            <li className='settings__darkmode'>
               <FaPizzaSlice />
             </li>
           </ul>
