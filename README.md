@@ -1,5 +1,7 @@
+## react-firebase-todoist-clone
+
 To Look For
-->React.StrictMode
+-> React.StrictMode
 implisit / explisit export
-# react-firebase-todoist-clone
-# react-firebase-todoist-clone
+
+// userId 2OcT7Toll5wIxRRWKDQL

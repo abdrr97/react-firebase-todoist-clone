@@ -1,21 +1,11 @@
+import React from 'react'
+import { Content, Header } from './components/layout'
+
 export const App = () => {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Content />
     </div>
   )
 }
-
-export default App
