@@ -5,31 +5,35 @@ import { IndividualProject } from './IndividualProject'
 export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue)
   const { setSelectedProject } = useSelectedPorjectValue()
-  const { projects } = useProjectsValue()
+  const { projects, isProjectsLoading } = useProjectsValue()
 
   return (
-    projects &&
-    projects.map((project) => {
-      const { docId, projectId } = project
+    <>
+      {isProjectsLoading && <h1>loading ...</h1>}
+      {!isProjectsLoading &&
+        projects &&
+        projects.map((project) => {
+          const { docId, projectId } = project
 
-      return (
-        <li
-          key={projectId}
-          data-doc-id={docId}
-          className={
-            active === projectId
-              ? 'active sidebar__project'
-              : 'sidebar__project'
-          }
-          onClick={() => {
-            setActive(projectId)
-            setSelectedProject(projectId)
-          }}
-          role='button'
-        >
-          <IndividualProject project={project} />
-        </li>
-      )
-    })
+          return (
+            <li
+              key={projectId}
+              data-doc-id={docId}
+              className={
+                active === projectId
+                  ? 'active sidebar__project'
+                  : 'sidebar__project'
+              }
+              onClick={() => {
+                setActive(projectId)
+                setSelectedProject(projectId)
+              }}
+              role='button'
+            >
+              <IndividualProject project={project} />
+            </li>
+          )
+        })}
+    </>
   )
 }

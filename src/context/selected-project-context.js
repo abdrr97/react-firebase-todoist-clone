@@ -4,9 +4,12 @@ export const SelectedProjectContext = createContext()
 
 export const SelectedProjectProvider = ({ children }) => {
   const [selectedProject, setSelectedProject] = useState('INBOX')
-  const values = { selectedProject, setSelectedProject }
-
-  return <SelectedProjectContext.Provider value={values} children={children} />
+  return (
+    <SelectedProjectContext.Provider
+      value={{ selectedProject, setSelectedProject }}
+      children={children}
+    />
+  )
 }
 
 export const useSelectedPorjectValue = () => useContext(SelectedProjectContext)

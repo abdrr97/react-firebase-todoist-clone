@@ -43,6 +43,7 @@ export const Sidebar = () => {
           const { key, name, icon, label } = item
           return (
             <li
+              key={key}
               className={active === name ? 'active ' + name : undefined}
               onClick={() => {
                 setActive(name)

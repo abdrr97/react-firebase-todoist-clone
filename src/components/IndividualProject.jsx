@@ -8,13 +8,14 @@ export const IndividualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false)
   const { setSelectedProject } = useSelectedPorjectValue()
   const { projects, setProjects } = useProjectsValue()
+
   const deleteProject = () => {
     db.collection('projects')
       .doc(docId)
       .delete()
       .then(() => {
-        setProjects([...projects])
         setSelectedProject('INBOX')
+        setProjects([...projects.filter((p) => p.docId !== docId)])
       })
   }
   return (
@@ -31,7 +32,17 @@ export const IndividualProject = ({ project }) => {
             <div className='project-delete-modal__inner'>
               <p>Are you sure you want to delete this project</p>
               <button onClick={deleteProject}>delete</button>
-              <span onClick={() => setShowConfirm(!showConfirm)}>cancel</span>
+              <span
+                onClick={() => setShowConfirm(!showConfirm)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') setShowConfirm(!showConfirm)
+                }}
+                tabIndex={0}
+                role='button'
+                aria-label='Cancel adding project, do not delete'
+              >
+                Cancel
+              </span>
             </div>
           </div>
         )}
