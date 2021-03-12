@@ -125,12 +125,10 @@ $generic-bg: #db4c3f;
   display: flex;
   line-height: 18px;
   color: #333;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 20px;
   font-size: 14px;
   list-style-type: none;
   border-bottom: 1px solid #f0f0f0;
-  padding-left: 10px;
   cursor: pointer;
 
   &:hover {
@@ -274,7 +272,6 @@ header {
   @include mq('900px') {
     display: none;
   }
-
   li {
     &:hover .sidebar__project-delete {
       display: -webkit-box;
@@ -301,6 +298,9 @@ header {
 
       svg {
         color: #cacaca;
+        &:hover {
+          color: #dd4b39;
+        }
       }
     }
 
@@ -413,6 +413,9 @@ header {
             color: #555;
           }
         }
+      }
+      span {
+        margin-left: 10px;
       }
 
       &.active,
@@ -596,6 +599,7 @@ header {
     float: right;
     color: gray;
     margin: 20px 10px;
+    position: relative;
   }
 
   &__project {
@@ -631,12 +635,6 @@ header {
   @include no-select;
   cursor: pointer;
   margin-bottom: 20px;
-}
-
-.add-task__plus,
-.add-project__plus {
-  color: #dd4b39;
-  font-size: 18px;
 }
 
 .add-task__text,
@@ -679,13 +677,19 @@ header {
     }
   }
 }
-
+.add-task__plus,
+.add-project__plus {
+  color: #dd4b39;
+  font-size: 18px;
+  margin: 10px;
+}
 /* Project Overlay
   ============================================ */
 .project-overlay {
   @include box-overlay();
   background-color: white;
-
+  position: absolute;
+  top: 120px;
   @include mq('900px') {
     width: 200px;
     right: 0;
@@ -693,11 +697,41 @@ header {
 
   &__list li {
     @include task-item();
-    padding: 0;
-
+    padding: 10px;
+    top: 10px;
     div:nth-child(1) {
       width: 100%;
       padding: 10px;
+    }
+
+    .project-overlay__dot {
+      font-size: 40px;
+    }
+
+    &:nth-child(1) {
+      .project-overlay__dot {
+        color: #6accbc;
+      }
+    }
+    &:nth-child(2) {
+      .project-overlay__dot {
+        color: #fad003;
+      }
+    }
+    &:nth-child(3) {
+      .project-overlay__dot {
+        color: #ff8d85;
+      }
+    }
+    &:nth-child(4) {
+      .project-overlay__dot {
+        color: #ff9932;
+      }
+    }
+    &:nth-child(5) {
+      .project-overlay__dot {
+        color: #af38eb;
+      }
     }
   }
 }

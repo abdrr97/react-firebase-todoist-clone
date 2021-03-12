@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useTasks } from '../../hooks'
 import {
   FaChevronDown,
   FaInbox,
   FaRegCalendarAlt,
   FaRegCalendar,
   FaChevronRight,
+  FaArchive,
 } from 'react-icons/fa'
 import { useSelectedPorjectValue } from '../../context/selected-project-context'
 import { AddProject } from '../AddProject'
@@ -51,7 +53,7 @@ export const Sidebar = () => {
               }}
             >
               <span>{icon}</span>
-              <span>{label}</span>
+              <span>{label.toUpperCase()}</span>
             </li>
           )
         })}
@@ -69,7 +71,7 @@ export const Sidebar = () => {
             <FaChevronRight onClick={() => setShowProjects(!showProjects)} />
           )}
         </span>
-        <h2>Projects</h2>
+        <h2>PROJECTS</h2>
       </div>
       <ul className='sidebar__projects'>{showProjects && <Projects />}</ul>
       {showProjects && <AddProject />}

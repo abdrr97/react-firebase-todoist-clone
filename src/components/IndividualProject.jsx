@@ -6,16 +6,17 @@ import { db } from '../firebase'
 export const IndividualProject = ({ project }) => {
   const { name, docId } = project
   const [showConfirm, setShowConfirm] = useState(false)
-  const { setSelectedProject } = useSelectedPorjectValue()
+  const { setSelectedProject, selectedProject } = useSelectedPorjectValue()
   const { projects, setProjects } = useProjectsValue()
 
-  const deleteProject = () => {
-    db.collection('projects')
+  const deleteProject = async () => {
+    await db
+      .collection('projects')
       .doc(docId)
       .delete()
       .then(() => {
         setSelectedProject('INBOX')
-        setProjects([...projects.filter((p) => p.docId !== docId)])
+        setProjects(projects.filter((p) => p.projectId !== selectedProject))
       })
   }
   return (
