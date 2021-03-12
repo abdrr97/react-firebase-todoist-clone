@@ -21,7 +21,7 @@ export const AddProject = ({ shouldShow = false }) => {
         .then((docRef) => {
           docRef.get().then((doc) => {
             if (doc.exists) {
-              setProjects([...projects, doc.data()])
+              setProjects([...projects, { docId: doc.id, ...doc.data() }])
             }
           })
           setProjectName('')

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { db } from '../firebase'
 
 export const Checkbox = ({ id, archived }) => {

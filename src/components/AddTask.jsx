@@ -14,15 +14,27 @@ export const AddTask = ({
 }) => {
   const [task, setTask] = useState('')
   const [taskDate, setTaskDate] = useState('')
-  const [project, setProject] = useState('')
+  const [projectName, setProjectName] = useState('')
   const [showMain, setShowMain] = useState(showShouldMain)
   const [showProjectOverlay, setShowProjectOverlay] = useState(false)
   const [showTaskDate, setShowTaskDate] = useState(false)
 
   const { selectedProject } = useSelectedPorjectValue()
-
+  const projectOverlayProps = {
+    projectName,
+    setProjectName,
+    showProjectOverlay,
+    showTaskDate,
+    setShowProjectOverlay,
+  }
+  const taskDateProps = {
+    setTaskDate,
+    setShowProjectOverlay,
+    showTaskDate,
+    setShowTaskDate,
+  }
   const addTask = () => {
-    const projectId = project || selectedProject
+    const projectId = projectName || selectedProject
     let collatedDate = ''
     if (projectId) {
       collatedDate = moment().format('DD/MM/YYYY')
@@ -43,7 +55,7 @@ export const AddTask = ({
         })
         .then(() => {
           setTask('')
-          setProject('')
+          setProjectName('')
           setShowMain('')
           setShowProjectOverlay(false)
         })
@@ -85,19 +97,11 @@ export const AddTask = ({
               </span>
             </div>
           )}
-          <ProjectOverlay
-            setProject={setProject}
-            showProjectOverlay={showProjectOverlay}
-            showTaskDate={showTaskDate}
-            setShowProjectOverlay={setShowProjectOverlay}
-          />
 
-          <TaskDate
-            setTaskDate={setTaskDate}
-            setShowProjectOverlay={setShowProjectOverlay}
-            showTaskDate={showTaskDate}
-            setShowTaskDate={setShowTaskDate}
-          />
+          <ProjectOverlay {...projectOverlayProps} />
+
+          <TaskDate {...taskDateProps} />
+
           <input
             type='text'
             value={task}
@@ -130,7 +134,7 @@ export const AddTask = ({
             }}
             className='add-task__project'
           >
-            <FaRegListAlt />
+            <FaRegListAlt className={showProjectOverlay && 'icon-active'} />
           </span>
           <span
             onClick={() => {
@@ -139,7 +143,7 @@ export const AddTask = ({
             }}
             className='add-task__date'
           >
-            <FaRegCalendarAlt />
+            <FaRegCalendarAlt className={showTaskDate && 'icon-active'} />
           </span>
         </div>
       )}

@@ -1,12 +1,12 @@
 import React from 'react'
 import { useProjectsValue } from '../context'
 export const ProjectOverlay = ({
-  setProject,
+  setProjectName,
+  projectName,
   showProjectOverlay,
   setShowProjectOverlay,
 }) => {
   const { projects } = useProjectsValue()
-
   return (
     projects &&
     showProjectOverlay && (
@@ -16,9 +16,10 @@ export const ProjectOverlay = ({
             const { name, projectId } = project
             return (
               <li
+                className={projectName === projectId ? 'active' : ''}
                 key={projectId}
                 onClick={() => {
-                  setProject(projectId)
+                  setProjectName(projectId)
                   setShowProjectOverlay(false)
                 }}
               >

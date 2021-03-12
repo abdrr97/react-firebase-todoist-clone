@@ -5,7 +5,6 @@ export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue)
   const { setSelectedProject } = useSelectedPorjectValue()
   const { projects, isProjectsLoading } = useProjectsValue()
-  console.log('projects')
   return (
     <>
       {isProjectsLoading && <h1>loading ...</h1>}
@@ -13,7 +12,6 @@ export const Projects = ({ activeValue = null }) => {
         projects &&
         projects.map((project) => {
           const { docId, projectId } = project
-          console.log(docId)
           return (
             <li
               key={projectId}

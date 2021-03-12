@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useTasks } from '../../hooks'
+import React, { useState } from 'react'
 import {
   FaChevronDown,
   FaInbox,
   FaRegCalendarAlt,
   FaRegCalendar,
   FaChevronRight,
-  FaArchive,
 } from 'react-icons/fa'
 import { useSelectedPorjectValue } from '../../context/selected-project-context'
 import { AddProject } from '../AddProject'
