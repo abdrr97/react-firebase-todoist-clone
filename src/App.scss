@@ -145,11 +145,46 @@ $generic-bg: #db4c3f;
 /* Darkmode
   ============================================ */
 .darkmode {
-  header {
+  header,
+  .sidebar {
     -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     background-color: #282828;
     border-color: transparent;
+    color: white;
+  }
+  .sidebar__generic {
+    li {
+      color: white;
+    }
+    li:hover {
+      color: black;
+    }
+    .active {
+      color: black;
+    }
+  }
+  .sidebar__middle *,
+  .add-project,
+  .add-project span {
+    color: white;
+  }
+  .sidebar__projects li:hover {
+    color: black;
+  }
+  .tasks {
+    background-color: #3f3e3e;
+    border-color: transparent;
+    color: white;
+  }
+  .add-task,
+  .tasks__list li,
+  .add-task div span {
+    color: white;
+  }
+
+  body {
+    background-color: white !important;
   }
 }
 
@@ -777,4 +812,17 @@ header {
   &__cancel {
     @include cancel();
   }
+}
+
+.selected-task-date {
+  background-color: #dd4b39;
+  color: white;
+  // display: flex;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  width: 130px;
+  margin: 10px;
+  border: transparent;
+  border-radius: 5px;
 }

@@ -5,6 +5,7 @@ export const ProjectOverlay = ({
   projectName,
   showProjectOverlay,
   setShowProjectOverlay,
+  setSelectdProjectName,
 }) => {
   const { projects } = useProjectsValue()
   return (
@@ -20,6 +21,7 @@ export const ProjectOverlay = ({
                 key={projectId}
                 onClick={() => {
                   setProjectName(projectId)
+                  setSelectdProjectName(name)
                   setShowProjectOverlay(false)
                 }}
               >

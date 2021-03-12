@@ -15,6 +15,7 @@ export const AddTask = ({
   const [task, setTask] = useState('')
   const [taskDate, setTaskDate] = useState('')
   const [projectName, setProjectName] = useState('')
+  const [selectdProjectName, setSelectdProjectName] = useState('')
   const [showMain, setShowMain] = useState(showShouldMain)
   const [showProjectOverlay, setShowProjectOverlay] = useState(false)
   const [showTaskDate, setShowTaskDate] = useState(false)
@@ -26,6 +27,7 @@ export const AddTask = ({
     showProjectOverlay,
     showTaskDate,
     setShowProjectOverlay,
+    setSelectdProjectName,
   }
   const taskDateProps = {
     setTaskDate,
@@ -55,7 +57,9 @@ export const AddTask = ({
         })
         .then(() => {
           setTask('')
+          setTaskDate('')
           setProjectName('')
+          setSelectdProjectName('')
           setShowMain('')
           setShowProjectOverlay(false)
         })
@@ -79,7 +83,6 @@ export const AddTask = ({
           </span>
         </div>
       )}
-      {/* showQuickAddTask */}
       {(showMain || showQuickAddTask) && (
         <div className='add-task__main'>
           {showQuickAddTask && (
@@ -97,17 +100,15 @@ export const AddTask = ({
               </span>
             </div>
           )}
-
           <ProjectOverlay {...projectOverlayProps} />
-
           <TaskDate {...taskDateProps} />
-
           <input
             type='text'
             value={task}
             onChange={(e) => setTask(e.target.value)}
             className='add-task__content'
           />
+
           <button
             onClick={() => addTask()}
             type='button'
@@ -115,7 +116,10 @@ export const AddTask = ({
           >
             Add Task
           </button>
-
+          {taskDate && <div className='selected-task-date'>{taskDate}</div>}
+          {projectName && (
+            <div className='selected-task-date'>{selectdProjectName}</div>
+          )}
           {!showQuickAddTask && (
             <span
               className='add-task__cancel'

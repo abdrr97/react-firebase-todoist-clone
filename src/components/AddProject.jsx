@@ -6,7 +6,7 @@ import { useProjectsValue } from '../context'
 export const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow)
   const [projectName, setProjectName] = useState('')
-  const { projects, setProjects, getProjects } = useProjectsValue()
+  const { projects, setProjects } = useProjectsValue()
   const projectId = generatePushId()
 
   const addProject = () => {
