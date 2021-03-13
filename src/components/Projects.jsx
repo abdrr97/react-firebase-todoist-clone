@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useSelectedPorjectValue, useProjectsValue } from '../context'
 import { IndividualProject } from './IndividualProject'
+import Skeleton from 'react-loading-skeleton'
+
 export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue)
   const { setSelectedProject } = useSelectedPorjectValue()
   const { projects, isProjectsLoading } = useProjectsValue()
   return (
     <>
-      {isProjectsLoading && <h1>loading ...</h1>}
+      {isProjectsLoading && <Skeleton count={5} className='sidebar__project' />}
       {!isProjectsLoading &&
         projects &&
         projects.map((project) => {

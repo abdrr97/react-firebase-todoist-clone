@@ -34,6 +34,12 @@ export const Sidebar = () => {
       label: ' Next 7 days',
       icon: <FaRegCalendarAlt />,
     },
+    {
+      key: 'ARCHIVED',
+      name: 'archisved',
+      label: ' Archived',
+      icon: <FaRegCalendarAlt />,
+    },
   ]
 
   return (

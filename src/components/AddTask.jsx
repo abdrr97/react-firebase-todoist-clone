@@ -35,7 +35,7 @@ export const AddTask = ({
     showTaskDate,
     setShowTaskDate,
   }
-  const addTask = () => {
+  const addTask = async () => {
     const projectId = projectName || selectedProject
     let collatedDate = ''
     if (projectId) {
@@ -46,7 +46,7 @@ export const AddTask = ({
     return (
       task &&
       projectId &&
-      db
+      (await db
         .collection('tasks')
         .add({
           archived: false,
@@ -62,7 +62,7 @@ export const AddTask = ({
           setSelectdProjectName('')
           setShowMain('')
           setShowProjectOverlay(false)
-        })
+        }))
     )
   }
 

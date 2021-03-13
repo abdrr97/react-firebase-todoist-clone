@@ -42,8 +42,11 @@ export const useTasks = (selectedProject) => {
                   moment(task.date, 'DD/MM/YYYY').diff(moment(), 'days') <= 7 &&
                   !task.archived
               )
+            : selectedProject === 'ARCHIVED'
+            ? newTasks.filter((task) => task.archived)
             : newTasks.filter((task) => !task.archived)
         )
+        console.log(newTasks)
         setArchivedTasks(newTasks.filter((task) => task.archived))
       })
 

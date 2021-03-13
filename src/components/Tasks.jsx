@@ -33,8 +33,7 @@ export const Tasks = () => {
     <div className='tasks'>
       <h2>{projectName}</h2>
       <AddTask />
-      {isLoading && <h1>loading...</h1>}
-      {!isLoading && (
+      {
         <ul className='tasks__list'>
           {tasks.map((task) => {
             const { id, description, archived } = task
@@ -46,7 +45,7 @@ export const Tasks = () => {
             )
           })}
         </ul>
-      )}
+      }
     </div>
   )
 }
