@@ -44,75 +44,79 @@ const UpdateProfile = () => {
   }
   return (
     <>
-      <div className='w-100' style={{ maxWidth: '400px' }}>
-        <div className='card'>
-          <div className='card-body'>
-            <h2 className='text-center mb-4'>Update Profile</h2>
+      <div
+        className='container d-flex align-items-center justify-content-center'
+        style={{ minHeight: '100vh' }}
+      >
+        <div className='w-100 ' style={{ maxWidth: '400px' }}>
+          <div className='card'>
+            <div className='card-body'>
+              <h2 className='text-center mb-4'>Update Profile</h2>
 
-            <form action='' onSubmit={handleUpdateProfile}>
-              {error && <div className='alert alert-danger'>{error}</div>}
+              <form action='' onSubmit={handleUpdateProfile}>
+                {error && <div className='alert alert-danger'>{error}</div>}
 
-              <div className='form-group'>
-                <label htmlFor='email'>Email</label>
-                <input
-                  onChange={(event) => setEmail(event.target.value)}
-                  required
-                  id='email'
-                  name='email'
-                  type='email'
-                  placeholder='email goes here '
-                  className='form-control'
-                  defaultValue={currentUser.email}
-                  value={!email ? currentUser.email : email}
-                />
-              </div>
-              <div className='form-group'>
-                <label htmlFor='password'>Password</label>
-                <input
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  id='password'
-                  name='password'
-                  type='password'
-                  placeholder='Leave it empty to keep the same'
-                  className='form-control'
-                />
-              </div>
-              <div className='form-group'>
-                <label htmlFor='password-confirmation'>
-                  Password Confirmation
-                </label>
-                <input
-                  value={confirmPassowrd}
-                  onChange={(event) => setConfirmPassowrd(event.target.value)}
-                  id='password-confirmation'
-                  name='password-confirmation'
-                  type='password'
-                  placeholder='Leave it empty to keep the same'
-                  className='form-control'
-                />
-              </div>
+                <div className='form-group'>
+                  <label htmlFor='email'>Email</label>
+                  <input
+                    onChange={(event) => setEmail(event.target.value)}
+                    required
+                    id='email'
+                    name='email'
+                    type='email'
+                    placeholder='email goes here '
+                    className='form-control'
+                    value={!email ? currentUser.email : email}
+                  />
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='password'>Password</label>
+                  <input
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    id='password'
+                    name='password'
+                    type='password'
+                    placeholder='Leave it empty to keep the same'
+                    className='form-control'
+                  />
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='password-confirmation'>
+                    Password Confirmation
+                  </label>
+                  <input
+                    value={confirmPassowrd}
+                    onChange={(event) => setConfirmPassowrd(event.target.value)}
+                    id='password-confirmation'
+                    name='password-confirmation'
+                    type='password'
+                    placeholder='Leave it empty to keep the same'
+                    className='form-control'
+                  />
+                </div>
 
-              <button
-                disabled={isLoading}
-                type='submit'
-                className='w-100 btn btn-primary mt-5'
-              >
-                {isLoading ? (
-                  <div className='d-flex justify-content-center'>
-                    <div className='spinner-border' role='status'>
-                      <span className='sr-only'>Loading...</span>
+                <button
+                  disabled={isLoading}
+                  type='submit'
+                  className='w-100 btn btn-primary mt-5'
+                >
+                  {isLoading ? (
+                    <div className='d-flex justify-content-center'>
+                      <div className='spinner-border' role='status'>
+                        <span className='sr-only'>Loading...</span>
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  'Update Profile'
-                )}
-              </button>
-            </form>
+                  ) : (
+                    'Update Profile'
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-        <div className='w-100 text-center mt-2'>
-          <Link to='/'>Cancel</Link>
+          <div className='w-100 text-center mt-2'>
+            <Link to='/'>Cancel</Link>
+          </div>
         </div>
       </div>
     </>

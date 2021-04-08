@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import moment from 'moment'
 import { db } from '../firebase'
 import { collatedTasksExists } from '../helpers'
+import { useAuth } from '../context/auth-context'
 
 export const useTasks = (selectedProject) => {
+  const { currentUser } = useAuth()
   const [tasks, setTasks] = useState([])
   const [archivedTasks, setArchivedTasks] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -12,7 +14,7 @@ export const useTasks = (selectedProject) => {
     const getTasks = async () => {
       let unsubscribe = await db
         .collection('tasks')
-        .where('userId', '==', '2OcT7Toll5wIxRRWKDQL')
+        .where('userId', '==', currentUser.uid)
       unsubscribe =
         selectedProject && !collatedTasksExists(selectedProject)
           ? (unsubscribe = await unsubscribe.where(
@@ -55,12 +57,13 @@ export const useTasks = (selectedProject) => {
     setIsLoading(true)
     getTasks()
     setIsLoading(false)
-  }, [selectedProject])
+  }, [currentUser, selectedProject])
 
   return { tasks, archivedTasks, isLoading, setTasks }
 }
 
 export const useProject = () => {
+  const { currentUser } = useAuth()
   const [projects, setProjects] = useState([])
   const [isProjectsLoading, setIsProjectsLoading] = useState(true)
 
@@ -68,7 +71,7 @@ export const useProject = () => {
     setIsProjectsLoading(true)
     await db
       .collection('projects')
-      .where('userId', '==', '2OcT7Toll5wIxRRWKDQL')
+      .where('userId', '==', currentUser.uid)
       .get()
       .then((snapshot) => {
         const allProjects = snapshot.docs.map((project) => ({
@@ -81,6 +84,8 @@ export const useProject = () => {
   }
 
   useEffect(() => {
+    if (!currentUser) return
+
     getProjects()
   }, [])
   return { projects, setProjects, isProjectsLoading, getProjects }

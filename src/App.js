@@ -1,12 +1,11 @@
-import React, { useState, lazy, Suspense } from 'react'
-import { Content, Header } from './components/layout'
+import React, { lazy, Suspense } from 'react'
 import { ProjectProvider, SelectedProjectProvider } from './context'
 import { AuthProvider } from './context/auth-context'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrivateRoute from './routes/PrivateRoute'
+import Dashboard from './pages/Dashboard'
 
 const Signup = lazy(() => import('./pages/SignUp'))
-const Dashboard = lazy(() => import('./pages/Dashboard'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const Login = lazy(() => import('./pages/Login'))
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))

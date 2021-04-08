@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaPizzaSlice, FaUserEdit } from 'react-icons/fa'
+import { BiLogOut } from 'react-icons/bi'
 import { AddTask } from '../AddTask'
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../../context/auth-context'
@@ -39,6 +40,11 @@ export const Header = () => {
               <Link to='update-profile'>
                 <FaUserEdit />
               </Link>
+            </li>
+            <li className='settings__edit-profile'>
+              <button className='settings__add' onClick={handleLogout}>
+                <BiLogOut />
+              </button>
             </li>
             <li
               className='settings__add'

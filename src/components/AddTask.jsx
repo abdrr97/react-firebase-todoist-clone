@@ -5,6 +5,7 @@ import { db } from '../firebase'
 import { useSelectedPorjectValue } from '../context'
 import { ProjectOverlay } from './ProjectOverlay'
 import { TaskDate } from './TaskDate'
+import { useAuth } from '../context/auth-context'
 
 export const AddTask = ({
   showAddTaskMain = true,
@@ -19,6 +20,7 @@ export const AddTask = ({
   const [showMain, setShowMain] = useState(showShouldMain)
   const [showProjectOverlay, setShowProjectOverlay] = useState(false)
   const [showTaskDate, setShowTaskDate] = useState(false)
+  const { currentUser } = useAuth()
 
   const { selectedProject } = useSelectedPorjectValue()
   const projectOverlayProps = {
@@ -50,7 +52,7 @@ export const AddTask = ({
         .collection('tasks')
         .add({
           archived: false,
-          userId: '2OcT7Toll5wIxRRWKDQL',
+          userId: currentUser.uid,
           date: taskDate || collatedDate,
           projectId,
           description: task,

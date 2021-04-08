@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { db } from '../firebase'
 import { generatePushId } from '../helpers'
 import { useProjectsValue } from '../context'
+import { useAuth } from '../context/auth-context'
 
 export const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow)
   const [projectName, setProjectName] = useState('')
   const { projects, setProjects } = useProjectsValue()
   const projectId = generatePushId()
+  const { currentUser } = useAuth()
 
   const addProject = () => {
     projectName &&
@@ -16,7 +18,7 @@ export const AddProject = ({ shouldShow = false }) => {
         .add({
           projectId,
           name: projectName,
-          userId: '2OcT7Toll5wIxRRWKDQL',
+          userId: currentUser.uid,
         })
         .then((docRef) => {
           docRef.get().then((doc) => {

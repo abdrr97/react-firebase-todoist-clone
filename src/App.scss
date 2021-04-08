@@ -248,7 +248,8 @@ header {
           &.settings__edit-profile {
             margin-right: 15px;
             font-size: 25px;
-            a {
+            a,
+            button {
               @include transparent-button();
               color: white;
               cursor: pointer;
