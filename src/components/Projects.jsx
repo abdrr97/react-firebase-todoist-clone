@@ -7,6 +7,7 @@ export const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue)
   const { setSelectedProject } = useSelectedPorjectValue()
   const { projects, isProjectsLoading } = useProjectsValue()
+
   return (
     <>
       {isProjectsLoading && <Skeleton count={5} className='sidebar__project' />}
