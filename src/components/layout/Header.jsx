@@ -61,6 +61,7 @@ export const Header = () => {
           </ul>
         </div>
       </nav>
+      {error && <div className=''>{error}</div>}
       <AddTask
         showAddTaskMain={false}
         showShouldMain={showShouldMain}

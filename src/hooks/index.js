@@ -67,6 +67,7 @@ export const useProject = () => {
   const [projects, setProjects] = useState([])
   const [isProjectsLoading, setIsProjectsLoading] = useState(true)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getProjects = async () => {
     setIsProjectsLoading(true)
     await db
